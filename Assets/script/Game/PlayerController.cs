@@ -18,7 +18,8 @@ public class PlayerController : NetworkBehaviour
     private CharacterController _cc;
     private PlayerControll _playerControl;
     private float _cameraAngle;
-    
+    [SerializeField] private Transform spwanedObjPrefab;
+    private Transform spwanedObjTransform;
 
 
     public override void OnNetworkSpawn()
@@ -69,8 +70,11 @@ public class PlayerController : NetworkBehaviour
                 transform.RotateAround(transform.position, transform.up, lookInput.x * _turnSpeed * Time.deltaTime);
                 RotateCamera(lookInput.y);
             }
+            if (Input.GetKey(KeyCode.T)) {
+            spawnBallServerRPC();
+            }
         }
-       
+        
         //if (!IsOwner) return;
         ///*if (Input.GetKey(KeyCode.T)) {
         //    randomNumber.Value = Random.Range(0, 100);
@@ -83,7 +87,17 @@ public class PlayerController : NetworkBehaviour
         //float moveSpeed = 3f;
         //transform.position += moveDir * moveSpeed * Time.deltaTime;
     }
-    
+    //[ServerRpc]
+    //private void UseButtonServerRpc()
+    //{
+    //    if (Physics.Raycast(_camTransform.position, _camTransform.forward, out RaycastHit hit, _interactDistance, _interactionLayer))
+    //    {
+    //        if (hit.collider.TryGetComponent<ButtonDoor>(out ButtonDoor buttonDoor))
+    //        {
+    //            buttonDoor.Activate();
+    //        }
+    //    }
+    //}
     private void RotateCamera(float lookInputY)
     {
         _cameraAngle = Vector3.SignedAngle(transform.forward, _camTransform.forward, _camTransform.right);
@@ -94,5 +108,14 @@ public class PlayerController : NetworkBehaviour
             _camTransform.RotateAround(_camTransform.position, _camTransform.right, -lookInputY * _turnSpeed * Time.deltaTime);
         }
     }
-    
+    private void spawnBall(){
+        spwanedObjTransform = Instantiate(spwanedObjPrefab);
+        spwanedObjTransform.position = transform.position;
+        spwanedObjTransform.GetComponent<NetworkObject>().Spawn();
+    }
+
+    [ServerRpc]
+    private void spawnBallServerRPC(){
+        spawnBall();
+    }
 }
