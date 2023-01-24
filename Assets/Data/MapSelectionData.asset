@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f6894a8c9eb4a06a27bb6df7d121b8, type: 3}
+  m_Name: MapSelectionData
+  m_EditorClassIdentifier: 
+  Maps:
+  - MapThumbnail: {r: 1, g: 0, b: 0, a: 1}
+    MapName: Red Map
+    SceneName: RedScene
+  - MapThumbnail: {r: 0.6080383, g: 1, b: 0.5896226, a: 1}
+    MapName: Green Map
+    SceneName: GreenScene
+  - MapThumbnail: {r: 0.53626734, g: 0.6688995, b: 0.9716981, a: 1}
+    MapName: Blue Map
+    SceneName: BlueScene

@@ -19,18 +19,18 @@ namespace Game
         // Start is called before the first frame update
         void OnEnable()
         {
-            _hostButton.onClick.AddListener(OnHostClick);
-            _joinButton.onClick.AddListener(OnJoinClick);
+            _hostButton.onClick.AddListener(OnHostClicked);
+            _joinButton.onClick.AddListener(OnJoinClicked);
             _submitCodeButton.onClick.AddListener(OnSubmitCodeClicked);
         }
         private void OnDisable()
         {
-            _hostButton.onClick.RemoveListener(OnHostClick);
-            _joinButton.onClick.RemoveListener(OnJoinClick);
+            _hostButton.onClick.RemoveListener(OnHostClicked);
+            _joinButton.onClick.RemoveListener(OnJoinClicked);
             _submitCodeButton.onClick.RemoveListener(OnSubmitCodeClicked);
         }
 
-        private async void OnHostClick()
+        private async void OnHostClicked()
         {
             bool succeeded = await GameLobbyManager.Instance.CreateLobby();
             if (succeeded)
@@ -39,7 +39,7 @@ namespace Game
             }
         }
 
-        private void OnJoinClick()
+        private void OnJoinClicked()
         {
             Debug.Log(message: "joinClick!!!");
             _mainScreen.SetActive(false);

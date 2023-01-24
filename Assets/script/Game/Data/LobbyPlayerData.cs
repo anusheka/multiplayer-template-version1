@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Services.Lobbies.Models;
-using UnityEngine;
-namespace GameFramework.Core.Data {
+
+namespace GameFramework.Core.Data
+{
     public class LobbyPlayerData
     {
         private string _id;
@@ -12,13 +12,13 @@ namespace GameFramework.Core.Data {
         public string Id => _id;
         public string Gamertag => _gamertag;
 
-        public bool IsReady 
+        public bool IsReady
         {
             get => _isReady;
             set => _isReady = value;
         }
 
-        public void Initialize( string id, string gamertag)
+        public void Initialize(string id, string gamertag)
         {
             _id = id;
             _gamertag = gamertag;
@@ -29,7 +29,7 @@ namespace GameFramework.Core.Data {
             UpdateState(playerData);
         }
 
-        public void UpdateState(Dictionary<string, PlayerDataObject> playerData) 
+        public void UpdateState(Dictionary<string, PlayerDataObject> playerData)
         {
             if (playerData.ContainsKey("Id"))
             {
@@ -44,15 +44,16 @@ namespace GameFramework.Core.Data {
                 _isReady = playerData["IsReady"].Value == "True";
             }
         }
-        public Dictionary<string, string> Serialize() 
+
+        public Dictionary<string, string> Serialize()
         {
             return new Dictionary<string, string>()
             {
                 {"Id", _id},
                 {"Gamertag", _gamertag},
                 {"IsReady", _isReady.ToString()},
+                {"Attibute1", "sadasdsa"}
             };
         }
     }
-
 }
