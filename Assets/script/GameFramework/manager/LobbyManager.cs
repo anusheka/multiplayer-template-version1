@@ -194,5 +194,7 @@ namespace GameFramework.Core.GameFramework.Manager
         {
             return _lobby.HostId;
         }
+
+        //delete lobby?
     }
 }

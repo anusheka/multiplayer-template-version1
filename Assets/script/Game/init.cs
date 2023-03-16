@@ -38,6 +38,7 @@ namespace Game
 
         private void OnSignedIn()
         {
+            Debug.Log($"Signed In, playerId: {AuthenticationService.Instance.PlayerId}");
             Debug.Log($"Signed In, token: {AuthenticationService.Instance.AccessToken}");
         }
         // Update is called once per frame
